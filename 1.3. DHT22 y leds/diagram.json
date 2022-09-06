@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -15.53,
+      "left": 145.5,
+      "attrs": { "temperature": "18.1", "humidity": "56" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 30.97,
+      "left": -67.83,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 88.64,
+      "left": -69.5,
+      "attrs": { "color": "blue" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "dht1:SDA", "esp:D15", "green", [ "v0" ] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "led1:A", "esp:D32", "green", [ "v0" ] ],
+    [ "led2:A", "esp:D33", "green", [ "h25.67", "v-48.94" ] ],
+    [ "led2:C", "esp:GND.2", "black", [ "v0" ] ],
+    [ "led1:C", "led2:C", "black", [ "v-0.26", "h-16.67", "v54.67" ] ]
+  ]
+}

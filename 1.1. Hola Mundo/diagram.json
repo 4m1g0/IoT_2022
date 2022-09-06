@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -3.33,
+      "left": 153.33,
+      "attrs": { "color": "red" }
+    },
+    { "type": "wokwi-resistor", "id": "r1", "top": 64, "left": 149.33, "rotate": 90, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.1", "led1:C", "black", [ "h0" ] ],
+    [ "led1:A", "r1:1", "green", [ "v0" ] ],
+    [ "r1:2", "esp:D2", "green", [ "h0", "v38" ] ]
+  ]
+}
